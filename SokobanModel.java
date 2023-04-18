@@ -26,7 +26,6 @@ public class SokobanModel {
                 if(cell == 2){
                     count++;
                 }
-
             }
         }
 

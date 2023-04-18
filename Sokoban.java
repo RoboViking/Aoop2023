@@ -39,9 +39,9 @@ public class Sokoban{
 
         JFrame frame = new JFrame("Sokoban");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.setSize(480, 600);
-        
-        //frame.add(view);
+        frame.setBackground(Color.darkGray);
+        frame.setSize(460, 800);
+        frame.add(view);
         frame.setVisible(true);
 
 
@@ -50,7 +50,7 @@ public class Sokoban{
 
             //update the controller and repaint view
             //controller.update();
-            //view.repaint();
+            view.repaint();
 
             try{
                 Thread.sleep(16); //makes sure that the cpu doesnt over heat. Will have to change this if i have the time for actuall 60 fps
