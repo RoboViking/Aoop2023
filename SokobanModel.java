@@ -19,7 +19,7 @@ public class SokobanModel {
     }
 
     //checks if the map hold any crates which means that they aren't markedCrates
-    private boolean stateCheck(){
+    boolean stateCheck(){
         int count = 0;
         for(int[] row : map){
             for(int cell : row){

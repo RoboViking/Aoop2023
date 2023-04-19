@@ -8,16 +8,6 @@ import java.awt.*;
 
 public class Sokoban{
     public static void main(String[] args){
-    
-        /*
-         * The maps are stored in a 2d int array
-         * 0: ground
-         * 1: wall
-         * 2: crate
-         * 3: blank goal
-         * 4: crate marked (a crate that is on a goal)
-         * 5: player
-         */
 
         //the map
         int[][] map = {
@@ -32,28 +22,37 @@ public class Sokoban{
             {1, 1, 1, 1, 1, 1, 1, 1}
         };
 
-        //model init
+        //init
         SokobanModel model =  new SokobanModel(map);
         SokobanView view = new SokobanView(model);
-        SokobanController controller = new SokobanController();
+        //SokobanController controller = new SokobanController();
 
         JFrame frame = new JFrame("Sokoban");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBackground(Color.darkGray);
-        frame.setSize(460, 800);
-        frame.add(view);
+        frame.setSize(32*8, 36*9);
+        frame.add(view.getPanel());
+        frame.pack();
         frame.setVisible(true);
 
+        String test= "frame, ";
 
         //the game loop
         while(true){
+
+            if(!model.stateCheck()){
+                System.out.println("YOU WON");
+                
+            }
 
             //update the controller and repaint view
             //controller.update();
             view.repaint();
 
+            System.out.print(test);
+
             try{
-                Thread.sleep(16); //makes sure that the cpu doesnt over heat. Will have to change this if i have the time for actuall 60 fps
+                Thread.sleep(17); //makes sure that the cpu doesnt over heat. Will have to change this if i have the time for actuall 60 fps
             }catch(Exception e){
                 System.out.println("Something went wrong");
             }
