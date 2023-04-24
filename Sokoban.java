@@ -25,7 +25,7 @@ public class Sokoban{
         //init
         SokobanModel model =  new SokobanModel(map);
         SokobanView view = new SokobanView(model);
-        //SokobanController controller = new SokobanController();
+        SokobanController controller = new SokobanController(model, view);
 
         JFrame frame = new JFrame("Sokoban");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -35,27 +35,25 @@ public class Sokoban{
         frame.pack();
         frame.setVisible(true);
 
-        String test= "frame, ";
-
         //the game loop
         while(true){
 
             if(!model.stateCheck()){
                 System.out.println("YOU WON");
-                
+                break;
             }
 
             //update the controller and repaint view
-            //controller.update();
-            view.repaint();
-
-            System.out.print(test);
+            controller.update();
+            view.update();
 
             try{
                 Thread.sleep(17); //makes sure that the cpu doesnt over heat. Will have to change this if i have the time for actuall 60 fps
             }catch(Exception e){
                 System.out.println("Something went wrong");
             }
+
+            //System.out.print("f, ");
         }
     }
 

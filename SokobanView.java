@@ -7,7 +7,6 @@ import java.awt.*;
 public class SokobanView extends JFrame{
     private SokobanModel model;
     private JPanel panel;
-    private JLabel[][] mapState;
     private int rows;
     private int columns;
 
@@ -30,12 +29,10 @@ public class SokobanView extends JFrame{
         panel = new JPanel(new GridLayout(rows, columns));
         panel.setSize(rows*32, columns*32);
 
-        mapState = new JLabel[rows][columns];
         for(int y = 0; y<rows; y++){
             for(int x=0; x<columns; x++){
                 JLabel tempLable = new JLabel();
-                mapState[y][x]=tempLable;
-
+                
                 switch(model.getMap()[y][x]){
                     case 0:
                         tempLable.setIcon(new ImageIcon("blank.png"));
@@ -58,7 +55,6 @@ public class SokobanView extends JFrame{
                 }       
                 panel.add(tempLable);
             }
-
         }
     }
 
@@ -67,32 +63,35 @@ public class SokobanView extends JFrame{
     }
 
     public void update(){
-        for(int y = 0; y<columns; y++){
-            for(int x=0; x<rows; x++){
-
+        panel.removeAll();
+        for(int y = 0; y<rows; y++){
+            for(int x=0; x<columns; x++){
+                JLabel tempLable = new JLabel();
+                
                 switch(model.getMap()[y][x]){
                     case 0:
-                        mapState[y][x].setIcon(new ImageIcon("blank.png"));
+                        tempLable.setIcon(new ImageIcon("blank.png"));
                         break;
                     case 1:
-                        mapState[y][x].setIcon(new ImageIcon("wall.png"));
+                        tempLable.setIcon(new ImageIcon("wall.png"));
                         break;
                     case 2:
-                        mapState[y][x].setIcon(new ImageIcon("crate.png"));
+                        tempLable.setIcon(new ImageIcon("crate.png"));
                         break;
                     case 3:
-                        mapState[y][x].setIcon(new ImageIcon("blankmarked.png"));
+                        tempLable.setIcon(new ImageIcon("blankmarked.png"));
                         break;
                     case 4:
-                        mapState[y][x].setIcon(new ImageIcon("cratemarked.png"));
+                        tempLable.setIcon(new ImageIcon("cratemarked.png"));
                         break;
                     case 5:
-                        mapState[y][x].setIcon(new ImageIcon("player.png"));    
+                        tempLable.setIcon(new ImageIcon("player.png"));    
                         break;
-                }
-
+                }       
+                panel.add(tempLable);
             }
         }
+        panel.revalidate();
         panel.repaint();
     }
     

@@ -35,4 +35,8 @@ public class SokobanModel {
             return false;
         }
     }  
+
+    public void positionUpdate(){
+
+    }
 }
