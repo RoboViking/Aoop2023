@@ -1,5 +1,8 @@
+package Sokoban;
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+import Sokoban.gObject;
 
 /*
  * holds the logic for painting the frames
@@ -9,6 +12,8 @@ public class SokobanView extends JFrame{
     private JPanel panel;
     private int rows;
     private int columns;
+    private ArrayList <gObject> objectList;
+    private gObject object;
 
 
     /*
@@ -35,7 +40,7 @@ public class SokobanView extends JFrame{
                 
                 switch(model.getMap()[y][x]){
                     case 0:
-                        tempLable.setIcon(new ImageIcon("blank.png"));
+                        model.addToList(new gObject(x, y, tempLable.setIcon(new ImageIcon("blank.png")));
                         break;
                     case 1:
                         tempLable.setIcon(new ImageIcon("wall.png"));
@@ -62,6 +67,7 @@ public class SokobanView extends JFrame{
         return panel;
     }
 
+    //updates the view with 
     public void update(){
         panel.removeAll();
         for(int y = 0; y<rows; y++){

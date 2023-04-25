@@ -1,3 +1,4 @@
+package Sokoban;
 import java.awt.event.*;
 
 public class SokobanController implements KeyListener{
@@ -11,6 +12,7 @@ public class SokobanController implements KeyListener{
     }
 
     public void update(){
+
     }
 
     @Override
@@ -19,7 +21,7 @@ public class SokobanController implements KeyListener{
 
         switch(key){
             case KeyEvent.VK_UP:
-
+                
                 break;
             case KeyEvent.VK_DOWN:
                 break;
