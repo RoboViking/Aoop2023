@@ -23,11 +23,12 @@ public class Sokoban{
             {1, 1, 1, 1, 1, 1, 1, 1}
         };
 
-        //init
+        //init framework
         SokobanModel model =  new SokobanModel(map);
         SokobanView view = new SokobanView(model);
         SokobanController controller = new SokobanController(model, view);
 
+        //frame init
         JFrame frame = new JFrame("Sokoban");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setBackground(Color.darkGray);

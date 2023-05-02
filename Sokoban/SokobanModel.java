@@ -28,7 +28,7 @@ public class SokobanModel{
         objectList.add(object);
     }
 
-    public ArrayList getObjectList(){
+    public ArrayList<gObject> getObjectList(){
         return objectList;
     }
 

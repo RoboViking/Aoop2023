@@ -2,14 +2,12 @@ package Sokoban;
 import javax.swing.JLabel;
 
 public abstract class gObject {
-    private int x;
-    private int y;
+    private int x, y;
     private JLabel image;
 
-    public gObject(int x, int y, JLabel image){
+    public gObject(int x, int y){
         this.x = x;
         this.y = y;
-        this.image = image;
     }
 
     public int getX(){
@@ -20,10 +18,6 @@ public abstract class gObject {
         return y;
     }
 
-    public JLabel getImage(){
-        return image;
-    }
-
     public void setX(int x){
         this.x = x;
     }
@@ -32,7 +26,13 @@ public abstract class gObject {
         this.y = y;
     }
 
-    public void setImage(JLabel image){
-        this.image = image;
+    public void setImage(JLabel lable){
+        this.image = lable;
     }
+
+    public JLabel getImage(){
+        return this.image;
+    }
+
+ 
 }

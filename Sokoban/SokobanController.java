@@ -21,7 +21,6 @@ public class SokobanController implements KeyListener{
 
         switch(key){
             case KeyEvent.VK_UP:
-                
                 break;
             case KeyEvent.VK_DOWN:
                 break;
