@@ -1,7 +1,5 @@
 package Sokoban;
 import java.util.ArrayList;
-import javax.swing.JLabel;
-import Sokoban.gObject;
 
 /*
  * the model holds the gamelogic
@@ -9,7 +7,7 @@ import Sokoban.gObject;
 public class SokobanModel{
     private int[][] map;
     private boolean state = false;//int to check if the game is won or not
-    private ArrayList<gObject> objectList; 
+    private ArrayList<gObject> objectList = new ArrayList<gObject>(); 
 
     public SokobanModel(int[][] map){
         this.map = map;

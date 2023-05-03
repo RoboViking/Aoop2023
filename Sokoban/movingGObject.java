@@ -2,12 +2,14 @@ package Sokoban;
 import javax.swing.JLabel;
 
 public class movingGObject extends gObject{
-    private int mx=0;
-    private int my=0;
-    private JLabel image;
+    private int mx=0, my=0;
+    private final int collisionLeft = 0;
+    private final int collisionRight = 1;
+    private final int collisionUp = 2;
+    private final int collisionDown = 3;
 
-    public movingGObject(int x, int y){
-        super(x, y);
+    public movingGObject(int x, int y, JLabel image){
+        super(x, y, image);
     }
 
     public void setMX(int mx){
@@ -26,30 +28,43 @@ public class movingGObject extends gObject{
         return my;
     }
 
-    public void setImage(JLabel image){
-        this.image = image;
-    }
-
-    public JLabel getImage(){
-        return this.image;
-    }
-
     /*
      * check functions for movable objects
      */
-    public boolean collisionUp(){
+ 
+     public boolean wallCollision(movingGObject object,int direction){
+        switch(direction){
+            case collisionLeft:
+
+                break;
+            case collisionRight:
+
+                break;
+            case collisionUp:
+
+                break;
+            case collisionDown:
+
+                break;
+        }
         return false;
     }
 
-    public boolean collisionDown(){
-        return false;
-    }
+    public boolean crateCollision(movingGObject object, int direction){
+        switch(direction){
+            case collisionLeft:
 
-    public boolean collisionLeft(){
-        return false;
-    }
+                break;
+            case collisionRight:
 
-    public boolean collisionRight(){
+                break;
+            case collisionUp:
+
+                break;
+            case collisionDown:
+
+                break;
+        }
         return false;
     }
 

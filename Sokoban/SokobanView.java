@@ -1,24 +1,20 @@
 package Sokoban;
 import javax.swing.*;
 import java.awt.*;
-import java.util.ArrayList;
-/*import Sokoban.gObject;
 import Sokoban.objects.blank;
 import Sokoban.objects.blankMarked;
 import Sokoban.objects.crate;
 import Sokoban.objects.crateMarked;
 import Sokoban.objects.player;
-import Sokoban.objects.wall;*/
+import Sokoban.objects.wall;
 
 /*
  * holds the logic for painting the frames
  */
 public class SokobanView extends JFrame{
-    private SokobanModel model;
     private JPanel panel;
     private int rows;
     private int columns;
-    private ArrayList <gObject> tempObjectList;
     //private gObject object;
 
 
@@ -33,7 +29,6 @@ public class SokobanView extends JFrame{
      */
     //init for the view
     public SokobanView(SokobanModel model){
-        this.model = model;
         this.rows = model.getMap().length;
         this.columns = model.getMap()[0].length;
 
@@ -47,34 +42,39 @@ public class SokobanView extends JFrame{
                 
                 switch(model.getMap()[y][x]){
                     case 0:
-                        tempLable.setIcon(new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png"));
-                        //tempObjectList.add(new blank(x,y));
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        tempLable.setIcon(blankImage);
+                        model.addToList(new blank(x,y, new JLabel(blankImage)));
                         break;
                     case 1:
-                        tempLable.setIcon(new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/wall.png"));
-                        //tempObjectList.add(new wall(x,y));
+                        ImageIcon wallImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/wall.png");
+                        tempLable.setIcon(wallImage);
+                        model.addToList(new wall(x,y, new JLabel(wallImage)));
                         break;
                     case 2:
-                        tempLable.setIcon(new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/crate.png"));
-                        //tempObjectList.add(new crate(x,y));
+                        ImageIcon crateImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/crate.png");
+                        tempLable.setIcon(crateImage);
+                        model.addToList(new crate(x,y, new JLabel(crateImage)));
                         break;
                     case 3:
-                        tempLable.setIcon(new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blankmarked.png"));
-                        //tempObjectList.add(new blankMarked(x,y));
+                        ImageIcon blankMarkedImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blankmarked.png");
+                        tempLable.setIcon(blankMarkedImage);
+                        model.addToList(new blankMarked(x,y, new JLabel(blankMarkedImage)));
                         break;
                     case 4:
-                        tempLable.setIcon(new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/cratemarked.png"));
-                        //tempObjectList.add(new crateMarked(x,y));
+                        ImageIcon crateMarkedImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/cratemarked.png");
+                        tempLable.setIcon(crateMarkedImage);
+                        model.addToList(new crateMarked(x,y, new JLabel(crateMarkedImage)));
                         break;
                     case 5:
-                        tempLable.setIcon(new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/player.png"));
-                        //tempObjectList.add(new player(x,y));
+                        ImageIcon playerImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/player.png");
+                        tempLable.setIcon(playerImage);
+                        model.addToList(new player(x,y, new JLabel(playerImage)));
                         break;
                 }       
                 panel.add(tempLable); 
             }
         }
-        //model.setObjectList(tempObjectList);
     }
 
     public JPanel getPanel(){
