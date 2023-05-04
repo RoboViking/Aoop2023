@@ -49,7 +49,6 @@ public abstract class gObject {
      * Checkers for collisions of moving objects
      */
     public boolean leftCollision(gObject object){
-        
         return false;
     }
 

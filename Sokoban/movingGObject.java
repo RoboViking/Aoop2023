@@ -1,7 +1,7 @@
 package Sokoban;
 import javax.swing.JLabel;
 
-public class movingGObject extends gObject{
+public abstract class movingGObject extends gObject{
     private int mx=0, my=0;
     private final int collisionLeft = 0;
     private final int collisionRight = 1;
@@ -28,10 +28,25 @@ public class movingGObject extends gObject{
         return my;
     }
 
+    public void moveUp(){
+        setMY(getMY()+1);
+    }
+
+    public void moveDown(){
+        setMY(getMY()-1);
+    }
+
+    public void moveLeft(){
+        setMX(getMX()-1);
+    }
+
+    public void moveRight(){
+        setMX(getMX()+1);
+    }
+
     /*
      * check functions for movable objects
      */
- 
      public boolean wallCollision(movingGObject object,int direction){
         switch(direction){
             case collisionLeft:
@@ -67,5 +82,7 @@ public class movingGObject extends gObject{
         }
         return false;
     }
+
+ 
 
 }

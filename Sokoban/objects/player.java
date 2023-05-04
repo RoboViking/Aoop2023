@@ -9,4 +9,5 @@ public class player extends movingGObject{
         super(x, y, image);
     }
     
+    
 }
