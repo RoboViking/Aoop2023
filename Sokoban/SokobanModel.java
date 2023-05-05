@@ -1,6 +1,6 @@
 package Sokoban;
-import java.util.ArrayList;
-
+import Sokoban.objects.crate;
+import Sokoban.objects.player;
 /*
  * the model holds the gamelogic
  */
@@ -9,36 +9,15 @@ public class SokobanModel{
     private boolean state = false;//int to check if the game is won or not
     //private ArrayList<gObject> objectList = new ArrayList<gObject>(); 
     private gObject[][] objectList;
+    private gObject player;
 
     public SokobanModel(int[][] map){
         this.map = map;
-        this.state = stateCheck();
     }
 
-    public int[][] getMap(){
+    public int[][] getLvl(){
         return map;
     }
-
-    public boolean getState(){
-        return state;
-    }
-
-    /*public void addToList(gObject object){
-        objectList.add(object);
-    }*/
-
-    public void setToObjectMap(gObject object, int x, int y){
-        objectList[y][x] = object;
-
-    }
-
-    /* public ArrayList<gObject> getObjectList(){
-        return objectList;
-    }
-
-    public void setObjectList(ArrayList<gObject> objectList){
-        this.objectList = objectList;
-    }*/
 
     public gObject[][] getObjectList(){
         return objectList;
@@ -48,13 +27,37 @@ public class SokobanModel{
         objectList = new gObject[y][x];
     }
 
+    public boolean getState(){
+        return state;
+    }
+
+    public void setToMap(gObject object, int x, int y){
+        objectList[y][x] = object;
+
+    }
+
+    public gObject getInMap(int x, int y){
+        return objectList[y][x];
+    }
+
+    public void setPlayer(gObject object){
+        if(object instanceof player){
+            this.player = object;
+        }else{
+            System.out.println("Bad player init");
+        }
+    }
+
+    public gObject getPlayer(){
+        return player;
+    }
 
     //checks if the map hold any crates which means that they aren't markedCrates
     boolean stateCheck(){
         int count = 0;
-        for(int[] row : map){
-            for(int cell : row){
-                if(cell == 2){
+        for(gObject[] row : objectList){
+            for(gObject cell : row){
+                if(cell instanceof crate){
                     count++;
                 }
             }

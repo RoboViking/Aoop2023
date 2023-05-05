@@ -55,6 +55,8 @@ public class Sokoban{
                 System.out.println("Something went wrong");
             }
 
+            System.out.println(model.getPlayer().getY());
+
             //System.out.print("f, ");
         }
     }

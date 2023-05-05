@@ -46,23 +46,25 @@ public abstract class gObject {
     }
 
     /*
-     * Checkers for collisions of moving objects
+     * Check for collisions of moving objects
      */
-    public boolean leftCollision(gObject object){
+
+    public boolean collision(gObject object, int direction){
+        switch(direction){
+            case collisionLeft:
+
+                break;
+            case collisionRight:
+
+                break;
+            case collisionUp:
+
+                break;
+            case collisionDown:
+
+                break;
+        }
         return false;
     }
 
-    public boolean rightCollision(gObject object){
-        return false;
-    }
-
-    public boolean upCollision(gObject object){
-        return false;
-    }
-
-    public boolean downCollision(gObject object){
-        return false;
-    }
-
- 
 }

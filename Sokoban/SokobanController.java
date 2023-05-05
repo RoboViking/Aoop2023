@@ -9,10 +9,11 @@ public class SokobanController implements KeyListener{
         this.model = model;
         this.view = view;
         view.addKeyListener(this);
+
     }
 
     public void update(){
-
+        
     }
 
     @Override
@@ -21,8 +22,12 @@ public class SokobanController implements KeyListener{
 
         switch(key){
             case KeyEvent.VK_UP:
+                int y = model.getPlayer().getY();
+                model.getPlayer().setY(y++);
                 break;
             case KeyEvent.VK_DOWN:
+                int y = model.getPlayer().getY();
+                model.getPlayer().setY(y--);
                 break;
             case KeyEvent.VK_LEFT:
                 break;
@@ -38,6 +43,8 @@ public class SokobanController implements KeyListener{
                 break;
 
         }
+
+        
     }
 
     @Override
