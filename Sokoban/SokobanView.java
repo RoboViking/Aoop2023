@@ -41,7 +41,7 @@ public class SokobanView extends JFrame{
         for(int y = 0; y<rows; y++){
             for(int x=0; x<columns; x++){
                 
-                JLabel tempLable = new JLabel();
+            JLabel tempLable = new JLabel();
                 
                 switch(model.getLvl()[y][x]){
                     case 0:

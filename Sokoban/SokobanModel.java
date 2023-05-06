@@ -27,10 +27,6 @@ public class SokobanModel{
         objectList = new gObject[y][x];
     }
 
-    public boolean getState(){
-        return state;
-    }
-
     public void setToMap(gObject object, int x, int y){
         objectList[y][x] = object;
 
@@ -53,6 +49,10 @@ public class SokobanModel{
     }
 
     //checks if the map hold any crates which means that they aren't markedCrates
+    public boolean getState(){
+        return state;
+    }
+
     boolean stateCheck(){
         int count = 0;
         for(gObject[] row : objectList){
@@ -63,6 +63,7 @@ public class SokobanModel{
             }
         }
 
+        System.out.println(player.getX()+", "+player.getY());
         if(count>=1){
             return true;
         }else{
