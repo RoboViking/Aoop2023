@@ -1,9 +1,7 @@
 package Sokoban;
 import javax.swing.*;
 import java.awt.*;
-import Sokoban.SokobanModel;
-import Sokoban.SokobanView;
-import Sokoban.SokobanController;
+
 /**
  * Holds the main game loop
  * initializes the model, controller and view
@@ -53,8 +51,7 @@ public class Sokoban{
                 break;
             }
 
-            //update the controller and repaint view
-            //controller.update();
+            //view repaint
             view.update();
 
             try{
@@ -62,7 +59,6 @@ public class Sokoban{
             }catch(Exception e){
                 System.out.println("Something went wrong");
             }
-
         }
     }
 

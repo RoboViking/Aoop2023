@@ -87,6 +87,14 @@ public class SokobanView extends JFrame{
         return panel;
     }
 
+    public int getWidth(){
+        return columns;
+    }
+
+    public int getHeight(){
+        return rows;
+    }
+
     //updates the view with 
     public void update(){
         panel.removeAll();

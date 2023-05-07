@@ -13,10 +13,6 @@ public class SokobanController implements KeyListener{
         player = model.getPlayer();
     }
 
-    public void update(){
-        
-    }
-
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -25,30 +21,33 @@ public class SokobanController implements KeyListener{
 
         switch(key){
             case KeyEvent.VK_UP:
-                player.setY(y++);
-                System.out.println("UP");
+                if(y<view.getHeight() && y>=0){
+                    player.setY(y+1);
+                }
+                //work on this
+
                 break;
             case KeyEvent.VK_DOWN:
-                player.setY(y--);
+                player.setY(y-1);
                 break;
             case KeyEvent.VK_LEFT:
-                player.setX(x--);
+                player.setX(x-1);
                 break;
             case KeyEvent.VK_RIGHT:
-                player.setX(x++);
+                player.setX(x+1);
                 break;
             case KeyEvent.VK_W:
-                player.setY(y++);
+                player.setY(y+1);
                 System.out.println("UP");
                 break;
             case KeyEvent.VK_S:
-                player.setY(y--);
+                player.setY(y-1);
                 break;
             case KeyEvent.VK_A:
-                player.setX(x--);
+                player.setX(x-1);
                 break;
             case KeyEvent.VK_D:
-                player.setX(x++);
+                player.setX(x+1);
                 break;
         }
     }
