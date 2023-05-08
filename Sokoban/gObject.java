@@ -48,7 +48,6 @@ public abstract class gObject {
     /*
      * Check for collisions of moving objects
      */
-
     public boolean collision(gObject object, int direction){
         switch(direction){
             case collisionLeft:

@@ -19,38 +19,58 @@ public class SokobanController implements KeyListener{
         int y = model.getPlayer().getY();
         int x = model.getPlayer().getX();
 
-        switch(key){
-            case KeyEvent.VK_UP:
-                if(y<view.getHeight() && y>=0){
-                    player.setY(y+1);
-                }
-                //work on this
+            switch(key){
+                case KeyEvent.VK_UP:
+                    if(y<view.getHeight()){
+                        player.setY(y+1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+                case KeyEvent.VK_DOWN:
+                    if(y>0){
+                        player.setY(y-1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+                case KeyEvent.VK_LEFT:
+                    if(x>0){
+                        player.setX(x-1);
+                        model.setToMap(player, player.getX(), player.getY());
 
-                break;
-            case KeyEvent.VK_DOWN:
-                player.setY(y-1);
-                break;
-            case KeyEvent.VK_LEFT:
-                player.setX(x-1);
-                break;
-            case KeyEvent.VK_RIGHT:
-                player.setX(x+1);
-                break;
-            case KeyEvent.VK_W:
-                player.setY(y+1);
-                System.out.println("UP");
-                break;
-            case KeyEvent.VK_S:
-                player.setY(y-1);
-                break;
-            case KeyEvent.VK_A:
-                player.setX(x-1);
-                break;
-            case KeyEvent.VK_D:
-                player.setX(x+1);
-                break;
+                    }
+                    break;
+                case KeyEvent.VK_RIGHT:
+                    if(x<view.getWidth()){
+                        player.setX(x+1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+                case KeyEvent.VK_W:
+                    if(y<view.getHeight()){
+                        player.setY(y+1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+                case KeyEvent.VK_S:
+                    if(y>0){
+                        player.setY(y-1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+                case KeyEvent.VK_A:
+                    if(x>0){
+                        player.setX(x-1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+                case KeyEvent.VK_D:
+                    if(x<view.getWidth()){
+                        player.setX(x+1);
+                        model.setToMap(player, player.getX(), player.getY());
+                    }
+                    break;
+            }
         }
-    }
 
     @Override
     public void keyReleased(KeyEvent e) {
@@ -59,7 +79,4 @@ public class SokobanController implements KeyListener{
     @Override
     public void keyTyped(KeyEvent e) {
     }
-
-
-    
 }

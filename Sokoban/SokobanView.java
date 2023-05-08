@@ -16,8 +16,6 @@ public class SokobanView extends JFrame{
     private int rows;
     private int columns;
     private SokobanModel model;
-    //private gObject object;
-
 
     /*
      * The maps are stored in a 2d int array

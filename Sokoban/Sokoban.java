@@ -55,7 +55,7 @@ public class Sokoban{
             view.update();
 
             try{
-                Thread.sleep(17); //makes sure that the cpu doesnt over heat. Will have to change this if i have the time for actuall 60 fps
+                Thread.sleep(32); //makes sure that the cpu doesnt over heat. Will have to change this if i have the time for actuall 60 fps
             }catch(Exception e){
                 System.out.println("Something went wrong");
             }
