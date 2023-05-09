@@ -9,7 +9,7 @@ public class SokobanModel{
     private boolean state = false;//int to check if the game is won or not
     //private ArrayList<gObject> objectList = new ArrayList<gObject>(); 
     private gObject[][] objectList;
-    private gObject player;
+    private player player;
 
     public SokobanModel(int[][] map){
         this.map = map;
@@ -24,19 +24,19 @@ public class SokobanModel{
     }
 
     public void setObjectListSize(int x, int y){
-        objectList = new gObject[y][x];
+        objectList = new gObject[x][y];
     }
 
     public void setToMap(gObject object, int x, int y){
-        objectList[y][x] = object;
+        objectList[x][y] = object;
 
     }
 
     public gObject getInMap(int x, int y){
-        return objectList[y][x];
+        return objectList[x][y];
     }
 
-    public void setPlayer(gObject object){
+    public void setPlayer(player object){
         if(object instanceof player){
             this.player = object;
         }else{
@@ -44,7 +44,7 @@ public class SokobanModel{
         }
     }
 
-    public gObject getPlayer(){
+    public player getPlayer(){
         return player;
     }
 

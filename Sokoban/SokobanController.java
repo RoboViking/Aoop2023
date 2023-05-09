@@ -1,6 +1,11 @@
 package Sokoban;
 import java.awt.event.*;
 
+import javax.swing.ImageIcon;
+import javax.swing.JLabel;
+
+import Sokoban.objects.*;
+
 public class SokobanController implements KeyListener{
     private SokobanModel model;
     private SokobanView view;
@@ -21,19 +26,25 @@ public class SokobanController implements KeyListener{
 
             switch(key){
                 case KeyEvent.VK_UP:
-                    if(y<view.getHeight()){
-                        player.setY(y+1);
+                    if(y>0){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
+                        player.setY(y-1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
                     break;
                 case KeyEvent.VK_DOWN:
-                    if(y>0){
-                        player.setY(y-1);
+                    if(y<view.getHeight()){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
+                        player.setY(y+1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
                     break;
                 case KeyEvent.VK_LEFT:
                     if(x>0){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
                         player.setX(x-1);
                         model.setToMap(player, player.getX(), player.getY());
 
@@ -41,30 +52,40 @@ public class SokobanController implements KeyListener{
                     break;
                 case KeyEvent.VK_RIGHT:
                     if(x<view.getWidth()){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
                         player.setX(x+1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
                     break;
                 case KeyEvent.VK_W:
-                    if(y<view.getHeight()){
-                        player.setY(y+1);
+                    if(y>0){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
+                        player.setY(y-1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
                     break;
                 case KeyEvent.VK_S:
-                    if(y>0){
-                        player.setY(y-1);
+                    if(y<view.getHeight() ){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
+                        player.setY(y+1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
                     break;
                 case KeyEvent.VK_A:
                     if(x>0){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
                         player.setX(x-1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
                     break;
                 case KeyEvent.VK_D:
                     if(x<view.getWidth()){
+                        ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+                        model.setToMap(new blank(x,y, new JLabel(blankImage)), x, y);
                         player.setX(x+1);
                         model.setToMap(player, player.getX(), player.getY());
                     }
