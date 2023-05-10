@@ -1,6 +1,8 @@
 package Sokoban;
 import javax.swing.JLabel;
 
+import Sokoban.objects.wall;
+
 public abstract class gObject {
     private int x, y;
     private JLabel image;
@@ -48,22 +50,38 @@ public abstract class gObject {
     /*
      * Check for collisions of moving objects
      */
-    public boolean collision(gObject object, int direction){
+    public boolean collision(gObject object, int direction, gObject[][] objectList){
+        int y = object.getY();
+        int x = object.getX();
+
+        
         switch(direction){
             case collisionLeft:
-
+                gObject oLeft = objectList[x-1][y];
+                if(oLeft instanceof wall){
+                    return false;
+                }
                 break;
             case collisionRight:
-
+                gObject oRight = objectList[x+1][y];
+                if(oRight instanceof wall){
+                    return false;
+                }
                 break;
             case collisionUp:
-
+                gObject oUp = objectList[x][y-1];
+                if(oUp instanceof wall){
+                    return false;
+                }
                 break;
             case collisionDown:
-
+                gObject oDown = objectList[x][y+1];
+                if(oDown instanceof wall){
+                    return false;
+                }
                 break;
         }
-        return false;
+        return true;
     }
 
 }
