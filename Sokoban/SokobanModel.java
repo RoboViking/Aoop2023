@@ -1,16 +1,15 @@
 package Sokoban;
 
+import Sokoban.framework.gObject;
+import Sokoban.framework.model;
 import Sokoban.objects.crate;
 import Sokoban.objects.player;
 
 /*
  * the model holds the gamelogic
  */
-public class SokobanModel {
+public class SokobanModel extends model{
     private int[][] map;
-    private boolean state = false;// int to check if the game is won or not
-    // private ArrayList<gObject> objectList = new ArrayList<gObject>();
-    private gObject[][] objectList;
     private player player;
 
     public SokobanModel(int[][] map) {
@@ -19,23 +18,6 @@ public class SokobanModel {
 
     public int[][] getLvl() {
         return map;
-    }
-
-    public gObject[][] getObjectList() {
-        return objectList;
-    }
-
-    public void setObjectListSize(int x, int y) {
-        objectList = new gObject[x][y];
-    }
-
-    public void setToMap(gObject object, int x, int y) {
-        objectList[x][y] = object;
-
-    }
-
-    public gObject getInMap(int x, int y) {
-        return objectList[x][y];
     }
 
     public void setPlayer(player object) {
@@ -50,14 +32,10 @@ public class SokobanModel {
         return player;
     }
 
-    // checks if the map hold any crates which means that they aren't markedCrates
-    public boolean getState() {
-        return state;
-    }
-
-    boolean stateCheck() {
+    @Override
+    public boolean stateCheck() {
         int count = 0;
-        for (gObject[] row : objectList) {
+        for (gObject[] row : getObjectList()) {
             for (gObject cell : row) {
                 if (cell instanceof crate) {
                     count++;

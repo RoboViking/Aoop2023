@@ -6,7 +6,7 @@ import java.awt.*;
 /**
  * Holds the main game loop
  * initializes the model, controller and view
- * also holds the data for the map
+ * also holds the initial data for the map
  */
 
 public class Sokoban {
@@ -46,13 +46,7 @@ public class Sokoban {
 
         // the game loop
         while (true) {
-
-            if (!model.stateCheck()) {
-                System.out.println("YOU WON");
-                break;
-            }
-
-            // view repaint
+            // view update
             view.update();
 
             try {
@@ -60,6 +54,11 @@ public class Sokoban {
                                   // the time for actuall 60 fps
             } catch (Exception e) {
                 System.out.println("Something went wrong");
+            }
+
+            if (!model.stateCheck()) {
+                System.out.println("YOU WON");
+                break;
             }
         }
     }

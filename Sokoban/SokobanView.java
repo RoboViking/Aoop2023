@@ -2,6 +2,7 @@ package Sokoban;
 
 import javax.swing.*;
 import java.awt.*;
+import Sokoban.framework.view;
 import Sokoban.objects.blank;
 import Sokoban.objects.blankMarked;
 import Sokoban.objects.crate;
@@ -12,11 +13,10 @@ import Sokoban.objects.wall;
 /*
  * holds the logic for painting the frames
  */
-public class SokobanView extends JFrame {
-    private JPanel panel;
-    private int rows;
-    private int columns;
+public class SokobanView extends view{
+    
     private SokobanModel model;
+    private JPanel panel;
 
     /*
      * The maps are stored in a 2d int array
@@ -30,15 +30,16 @@ public class SokobanView extends JFrame {
     // init for the view
     public SokobanView(SokobanModel model) {
         this.model = model;
-        this.rows = model.getLvl().length;
-        this.columns = model.getLvl()[0].length;
-        model.setObjectListSize(columns, rows);
+        
+        setHeight(model.getLvl().length);
+        setWidth(model.getLvl()[0].length);
+        model.setObjectListSize(getWidth(), getHeight());
 
-        panel = new JPanel(new GridLayout(rows, columns));
-        panel.setSize(rows * 32, columns * 32);
+        panel = new JPanel(new GridLayout(getHeight(), getWidth()));
+        panel.setSize(getHeight() * 32, getWidth() * 32);
 
-        for (int y = 0; y < rows; y++) {
-            for (int x = 0; x < columns; x++) {
+        for (int y = 0; y < getHeight(); y++) {
+            for (int x = 0; x < getWidth(); x++) {
 
                 JLabel tempLable = new JLabel();
 
@@ -92,19 +93,12 @@ public class SokobanView extends JFrame {
         return panel;
     }
 
-    public int getWidth() {
-        return columns;
-    }
-
-    public int getHeight() {
-        return rows;
-    }
-
     // updates the view with
+    @Override
     public void update() {
         panel.removeAll();
-        for (int y = 0; y < rows; y++) {
-            for (int x = 0; x < columns; x++) {
+        for (int y = 0; y < getHeight(); y++) {
+            for (int x = 0; x < getWidth(); x++) {
                 JLabel tempLable = model.getInMap(x, y).getImage();
                 panel.add(tempLable);
             }

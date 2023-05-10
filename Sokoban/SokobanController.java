@@ -5,9 +5,11 @@ import java.awt.event.*;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
+import Sokoban.framework.controller;
+import Sokoban.framework.gObject;
 import Sokoban.objects.*;
 
-public class SokobanController implements KeyListener {
+public class SokobanController extends controller {
     private SokobanModel model;
     private SokobanView view;
     private gObject player;
