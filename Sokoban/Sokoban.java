@@ -55,9 +55,9 @@ public class Sokoban {
                 System.out.println("Something went wrong");
             }
 
-            if (!model.stateCheck()) {
-                
+            if (!model.getState()) {
                 System.out.println("YOU WON");
+                frame.removeKeyListener(controller);
                 break;
             }
         }
