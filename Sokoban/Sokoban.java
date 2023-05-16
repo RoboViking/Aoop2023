@@ -15,7 +15,7 @@ public class Sokoban {
     private SokobanView view;
     private SokobanController controller;
 
-    public Sokoban() {
+    public Sokoban(){
         // the map
         int[][] map = {
                 { 0, 0, 1, 1, 1, 1, 1, 0 },
@@ -50,13 +50,13 @@ public class Sokoban {
             view.update();
 
             try {
-                Thread.sleep(32); // makes sure that the cpu doesnt over heat. Will have to change this if i have
-                                  // the time for actuall 60 fps
+                Thread.sleep(32); // makes sure that the cpu doesnt over heat ~32 ms is about 30 fps
             } catch (Exception e) {
                 System.out.println("Something went wrong");
             }
 
             if (!model.stateCheck()) {
+                
                 System.out.println("YOU WON");
                 break;
             }

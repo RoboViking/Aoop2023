@@ -35,19 +35,25 @@ public class SokobanModel extends model{
     @Override
     public boolean stateCheck() {
         int count = 0;
+        int length = getObjectList().length;
+        int height = getObjectList()[0].length;
+        int[][] mapState = new int[length][height];
+
         for (gObject[] row : getObjectList()) {
             for (gObject cell : row) {
                 if (cell instanceof crate) {
                     count++;
                 }
+
+     
             }
         }
 
         System.out.println(player.getX() + ", " + player.getY());
-        if (count >= 1) {
-            return true;
-        } else {
+        if (count == 0) {
             return false;
+        } else {
+            return true;
         }
     }
 
