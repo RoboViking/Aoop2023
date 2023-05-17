@@ -47,6 +47,14 @@ public class SokobanController extends controller {
         }
     }
 
+    public void stdMove(gObject preObject, int xMove, int yMove) {
+        player.setX(player.getX() + xMove);
+        player.setY(player.getY() + yMove);
+        blankPrint();
+        model.setToMap(player, player.getX(), player.getY());
+        setPreObject(preObject);
+    }
+
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -64,10 +72,7 @@ public class SokobanController extends controller {
                     }
 
                     if (upO instanceof blank || upO instanceof blankMarked) {
-                        player.setY(player.getY() - 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(upO);
+                        stdMove(upO, 0, -1);
                     }
 
                     if (upO instanceof crate && upO.collision(upO, 2, model.getObjectList())) {
@@ -78,16 +83,14 @@ public class SokobanController extends controller {
                             model.setToMap(
                                     new crateMarked(uptwoO.getX(), uptwoO.getY(), new JLabel(crateMarkedImage)),
                                     uptwoO.getX(), uptwoO.getY());
-
+                            stdMove(upO, 0, -1);
+                        } else if (uptwoO instanceof crate) {
                         } else {
                             upO.setY(upO.getY() - 1);
                             model.setToMap(upO, upO.getX(), upO.getY());
-
+                            stdMove(upO, 0, -1);
                         }
-                        player.setY(player.getY() - 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(upO);
+
                     }
 
                     if (upO instanceof crateMarked && upO.collision(upO, 2, model.getObjectList())) {
@@ -100,7 +103,6 @@ public class SokobanController extends controller {
                         player.setY(player.getY() - 1);
                         blankPrint();
                         model.setToMap(player, player.getX(), player.getY());
-
                         setPreObject(new blankMarked(player.getX(), player.getY(), new JLabel(blankMarkedImage)));
                     }
 
@@ -118,12 +120,7 @@ public class SokobanController extends controller {
                     }
 
                     if (downO instanceof blank || downO instanceof blankMarked) {
-                        player.setY(player.getY() + 1);
-
-                        blankPrint();
-
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(downO);
+                        stdMove(downO, 0, 1);
                     }
 
                     if (downO instanceof crate && downO.collision(downO, 3, model.getObjectList())) {
@@ -132,16 +129,15 @@ public class SokobanController extends controller {
                             model.setToMap(
                                     new crateMarked(downtwoO.getX(), downtwoO.getY(), new JLabel(crateMarkedImage)),
                                     downtwoO.getX(), downtwoO.getY());
+                            stdMove(downO, 0, 1);
+                        } else if (downtwoO instanceof crate) {
 
                         } else {
                             downO.setY(downO.getY() + 1);
                             model.setToMap(downO, downO.getX(), downO.getY());
-
+                            stdMove(downO, 0, 1);
                         }
-                        player.setY(player.getY() + 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(downO);
+
                     }
 
                     if (downO instanceof crateMarked && downO.collision(downO, 3, model.getObjectList())) {
@@ -172,10 +168,7 @@ public class SokobanController extends controller {
                     }
 
                     if (leftO instanceof blank || leftO instanceof blankMarked) {
-                        player.setX(player.getX() - 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(leftO);
+                        stdMove(leftO, -1, 0);
                     }
 
                     if (leftO instanceof crate && leftO.collision(leftO, 0, model.getObjectList())) {
@@ -185,17 +178,15 @@ public class SokobanController extends controller {
                             model.setToMap(
                                     new crateMarked(lefttwoO.getX(), lefttwoO.getY(), new JLabel(crateMarkedImage)),
                                     lefttwoO.getX(), lefttwoO.getY());
+                            stdMove(leftO, -1, 0);
+                        } else if (lefttwoO instanceof crate) {
 
                         } else {
                             leftO.setX(leftO.getX() - 1);
                             model.setToMap(leftO, leftO.getX(), leftO.getY());
-
+                            stdMove(leftO, -1, 0);
                         }
 
-                        player.setX(player.getX() - 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(leftO);
                     }
 
                     if (leftO instanceof crateMarked && leftO.collision(leftO, 0, model.getObjectList())) {
@@ -225,10 +216,7 @@ public class SokobanController extends controller {
                     }
 
                     if (rightO instanceof blank || rightO instanceof blankMarked) {
-                        player.setX(player.getX() + 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(rightO);
+                        stdMove(rightO, 1, 0);
                     }
 
                     if (rightO instanceof crate && rightO.collision(rightO, 1, model.getObjectList())) {
@@ -239,16 +227,16 @@ public class SokobanController extends controller {
                             model.setToMap(
                                     new crateMarked(righttwoO.getX(), righttwoO.getY(), new JLabel(crateMarkedImage)),
                                     righttwoO.getX(), righttwoO.getY());
+                            stdMove(rightO, 1, 0);
+
+                        } else if (righttwoO instanceof crate) {
 
                         } else {
                             rightO.setX(rightO.getX() + 1);
                             model.setToMap(rightO, rightO.getX(), rightO.getY());
-
+                            stdMove(rightO, 1, 0);
                         }
-                        player.setX(player.getX() + 1);
-                        blankPrint();
-                        model.setToMap(player, player.getX(), player.getY());
-                        setPreObject(rightO);
+
                     }
 
                     if (rightO instanceof crateMarked && rightO.collision(rightO, 1, model.getObjectList())) {
