@@ -13,6 +13,7 @@ public class Sokoban {
 
     private SokobanModel model;
     private SokobanView view;
+    private SokobanTextView txtView;
     private SokobanController controller;
 
     /*
@@ -37,6 +38,7 @@ public class Sokoban {
         // init framework
         model = new SokobanModel(map);
         view = new SokobanView(model);
+        txtView = new SokobanTextView(model); 
         controller = new SokobanController(model, view);
 
         // frame init
@@ -53,6 +55,8 @@ public class Sokoban {
         while (true) {
             // view update
             view.update();
+            txtView.update();
+            txtView.printCurrentMap();
 
             try {
                 Thread.sleep(32); // makes sure that the cpu doesnt over heat ~32 ms is about 30 fps

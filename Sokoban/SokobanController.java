@@ -141,8 +141,8 @@ public class SokobanController extends controller {
                     }
 
                 }
-                model.setState(model.stateCheck());
-                model.printState();
+                /*model.setState(model.stateCheck());
+                model.printCurrentMap();*/
                 break;
             case KeyEvent.VK_DOWN:
                 if (y <= view.getHeight() && player.collision(player, 3, model.getObjectList())) {
@@ -189,8 +189,8 @@ public class SokobanController extends controller {
 
                 }
 
-                model.setState(model.stateCheck());
-                model.printState();
+                /*model.setState(model.stateCheck());
+                model.printCurrentMap();*/
                 break;
             case KeyEvent.VK_LEFT:
                 if (x > 0 && player.collision(player, 0, model.getObjectList())) {
@@ -237,8 +237,8 @@ public class SokobanController extends controller {
                     }
 
                 }
-                model.setState(model.stateCheck());
-                model.printState();
+                /*model.setState(model.stateCheck());
+                model.printCurrentMap();*/
                 break;
             case KeyEvent.VK_RIGHT:
                 if (x <= view.getWidth() && player.collision(player, 1, model.getObjectList())) {
@@ -287,8 +287,8 @@ public class SokobanController extends controller {
                     }
 
                 }
-                model.setState(model.stateCheck());
-                model.printState();
+                /*model.setState(model.stateCheck());
+                model.printCurrentMap();*/
                 break;
         }
     }
