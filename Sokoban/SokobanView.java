@@ -10,8 +10,10 @@ import Sokoban.objects.crateMarked;
 import Sokoban.objects.player;
 import Sokoban.objects.wall;
 
-/*
- * holds the logic for painting the frames
+/**
+ * Extends the view.
+ * Holds the logic for initialising the view and updating logic.
+ * @author Fabian Henrysson
  */
 public class SokobanView extends view{
     
@@ -27,7 +29,11 @@ public class SokobanView extends view{
      * 4: crate marked (a crate that is on a goal)
      * 5: player
      */
-    // init for the view
+
+    /**
+     * Constructor for the initial game panel
+     * @param model model
+     */
     public SokobanView(SokobanModel model) {
         this.model = model;
         
@@ -88,12 +94,18 @@ public class SokobanView extends view{
             }
         }
     }
-
+    
+    /**
+     * Getter for the panel
+     * @return panel
+     */
     public JPanel getPanel() {
         return panel;
     }
 
-    // updates the view with
+    /**
+     * Update implementation of the panel
+     */
     @Override
     public void update() {
         panel.removeAll();

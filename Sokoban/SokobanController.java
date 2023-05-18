@@ -9,6 +9,11 @@ import Sokoban.framework.controller;
 import Sokoban.framework.gObject;
 import Sokoban.objects.*;
 
+
+/**
+ * Controller implementation
+ * @author Fabian Henrysson
+ */
 public class SokobanController extends controller {
     private SokobanModel model;
     private SokobanView view;
@@ -25,6 +30,11 @@ public class SokobanController extends controller {
     ImageIcon crateMarkedImage = new ImageIcon(
             "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/cratemarked.png");
 
+    /**
+     * Constructor for the controller which extends the controller
+     * @param model model
+     * @param view view
+     */
     public SokobanController(SokobanModel model, SokobanView view) {
         this.model = model;
         this.view = view;
@@ -32,14 +42,26 @@ public class SokobanController extends controller {
         player = model.getPlayer();
     }
 
+    /**
+     * Method that is used to remember the object which the player stands upon
+     * @param preObject the previous object
+    */
     public void setPreObject(gObject preObject) {
         this.preObject = preObject;
     }
 
+    /**
+     * Getter for the previous object
+     * @return preObject
+     */
     public gObject getPreObject() {
         return preObject;
     }
 
+    /**
+     * Method to add a ground object at the spot which you are moving away from
+     * unless the previous object was a marked ground object (blankMarked)
+     */
     public void blankPrint() {
 
         if (!(getPreObject() instanceof blankMarked)) {
@@ -47,6 +69,12 @@ public class SokobanController extends controller {
         }
     }
 
+    /**
+     * Method used for standard movement logic
+     * @param preObject previous object
+     * @param xMove movement change in x direction
+     * @param yMove movement change in y direction
+     */
     public void stdMove(gObject preObject, int xMove, int yMove) {
         player.setX(player.getX() + xMove);
         player.setY(player.getY() + yMove);
@@ -55,6 +83,11 @@ public class SokobanController extends controller {
         setPreObject(preObject);
     }
 
+    /**
+     * Keypresses logic which changes the gObject 2d array based on keypress,
+     * calls collision logic,
+     * calls for game state logic and prints the new state in the terminal.
+     */
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
@@ -259,10 +292,16 @@ public class SokobanController extends controller {
         }
     }
 
+    /**
+     * Empty implementation
+     */
     @Override
     public void keyReleased(KeyEvent e) {
     }
 
+    /**
+     * Empty implementation
+     */
     @Override
     public void keyTyped(KeyEvent e) {
     }

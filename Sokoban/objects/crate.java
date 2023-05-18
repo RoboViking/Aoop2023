@@ -4,16 +4,32 @@ import javax.swing.JLabel;
 
 import Sokoban.framework.gObject;
 
+/**
+ * crate implementation which extends game object (gObject)
+ * @author Fabian Henrysson
+ */
 public class crate extends gObject{
     private final int collisionLeft = 0;
     private final int collisionRight = 1;
     private final int collisionUp = 2;
     private final int collisionDown = 3;
 
+    /**
+     * Crate constructor
+     * @param x x cordiante
+     * @param y y cordiante
+     * @param image image of object
+     */
     public crate(int x, int y, JLabel image){
         super(x, y, image);
     }
 
+    /**
+     * Collision logic implementation
+     * @param object the object which moves
+     * @param direction the direction of your movement
+     * @param objectList object list of the current game state
+     */
     @Override
     public boolean collision(gObject object, int direction, gObject[][] objectList) {
         int y = object.getY();

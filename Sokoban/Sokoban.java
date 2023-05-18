@@ -4,9 +4,9 @@ import javax.swing.*;
 import java.awt.*;
 
 /**
- * Holds the main game loop
- * initializes the model, controller and view
- * also holds the initial data for the map
+ * Sokoban game implementation
+ * @author Fabian Henrysson
+ * @since 2023-04-14
  */
 
 public class Sokoban {
@@ -15,6 +15,11 @@ public class Sokoban {
     private SokobanView view;
     private SokobanController controller;
 
+    /*
+     * Sokoban constructor that holds the main game loop,
+     * init of the framework,
+     * and initial map.
+     */
     public Sokoban(){
         // the map
         int[][] map = {

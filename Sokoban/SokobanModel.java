@@ -4,8 +4,10 @@ import Sokoban.framework.gObject;
 import Sokoban.framework.model;
 import Sokoban.objects.*;
 
-/*
- * the model holds the gamelogic
+/**
+ * SokobanModel which extends model
+ * model holds the gamelogic used for the game
+ * @author Fabian Henrysson
  */
 public class SokobanModel extends model {
     private int[][] map;
@@ -13,14 +15,26 @@ public class SokobanModel extends model {
     private player player;
     private boolean state = true;
 
+    /**
+     * Seter the level
+     * @param map the map/level to be used
+     */
     public SokobanModel(int[][] map) {
         this.map = map;
     }
 
+    /**
+     * Getter for the map/level
+     * @return map
+     */
     public int[][] getLvl() {
         return map;
     }
 
+    /**
+     * Setter for the player object to be used in controller etc.
+     * @param object player
+     */
     public void setPlayer(player object) {
         if (object instanceof player) {
             this.player = object;
@@ -29,10 +43,18 @@ public class SokobanModel extends model {
         }
     }
 
+    /**
+     * Getter for the player object
+     * @return player
+     */
     public player getPlayer() {
         return player;
     }
 
+    /**
+     * Print method for the current map state in terminal
+     * Used for debugg and more
+     */
     public void printState() {
         for (int y = 0; y<getObjectList()[0].length; y++) {
             for (int x=0; x<getObjectList().length; x++) {
@@ -43,14 +65,25 @@ public class SokobanModel extends model {
         System.out.println();
     }
 
+    /**
+     * Setter for the current boolean game state
+     * @param state state
+     */
     public void setState(boolean state){
         this.state = state;
     }
 
+    /**
+     * Getter of the boolean state
+     */
     public boolean getState(){
         return state;
     }
     
+    /**
+     * Implementation of statceCheck which returns if the game is won or still running
+     * also writes the current state of the game into a 2d array to be printed in terminal
+     */
     @Override
     public boolean stateCheck() {
         int count = 0;
