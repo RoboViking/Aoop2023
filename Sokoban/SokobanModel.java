@@ -96,7 +96,6 @@ public class SokobanModel extends model {
 
     /**
      * Getter for current map
-     * 
      * @return currentMap
      */
     public int[][] getCurrentMap() {
@@ -105,7 +104,6 @@ public class SokobanModel extends model {
 
     /**
      * Setter for the current boolean game state
-     * 
      * @param state state
      */
     public void setState(boolean state) {
@@ -119,14 +117,25 @@ public class SokobanModel extends model {
         return state;
     }
 
+    /**
+     * setter for the previous object
+     * @param preObject
+     */
     public void setPreObject(gObject preObject) {
         this.preObject = preObject;
     }
 
+    /**
+     * returns the previous object
+     * @return preobject
+     */
     public gObject getPreObject() {
         return preObject;
     }
 
+    /**
+     * method to print blank tiles for normal movement
+     */
     public void blankPrint() {
         if (!(getPreObject() instanceof blankMarked)) {
             setToMap(new blank(getPlayer().getX(), getPlayer().getY(), new JLabel(blankImage)), getPlayer().getX(),
@@ -135,6 +144,11 @@ public class SokobanModel extends model {
         }
     }
 
+    /**
+     * standard moves used in the move method
+     * @param xMove step to move in the x axis
+     * @param yMove step to move in the y axis
+     */
     public void stdMove(int xMove, int yMove) {
         blankPrint();
         player.setX(player.getX() + xMove);
@@ -151,9 +165,9 @@ public class SokobanModel extends model {
      * down: 3
      * Movement method
      * 
-     * @param xMove
-     * @param yMove
-     * @param direction
+     * @param xMove step to move in the x axis
+     * @param yMove step to move in the y axis
+     * @param direction the direcion used in the collision logic
      */
     public void move(int xMove, int yMove, int direction) {
         if (player.getY() > 0 && player.collision(player, direction, getObjectList())) {
