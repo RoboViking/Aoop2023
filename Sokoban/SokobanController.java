@@ -17,18 +17,16 @@ import Sokoban.objects.*;
 public class SokobanController extends controller {
     private SokobanModel model;
     private SokobanView view;
-    private gObject player;
-    private gObject preObject;
+    //private gObject player;
+    //private gObject preObject;
 
-    private int y;
-    private int x;
+    //private int y;
+    //private int x;
 
-    ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
-    ImageIcon blankMarkedImage = new ImageIcon(
-            "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blankmarked.png");
-    ImageIcon crateImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/crate.png");
-    ImageIcon crateMarkedImage = new ImageIcon(
-            "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/cratemarked.png");
+    //ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
+    //ImageIcon blankMarkedImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blankmarked.png");
+    //ImageIcon crateImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/crate.png");
+    //ImageIcon crateMarkedImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/cratemarked.png");
 
     /**
      * Constructor for the controller which extends the controller
@@ -40,7 +38,7 @@ public class SokobanController extends controller {
         this.model = model;
         this.view = view;
         view.addKeyListener(this);
-        player = model.getPlayer();
+        //player = model.getPlayer();
     }
 
     /**
@@ -48,29 +46,29 @@ public class SokobanController extends controller {
      * 
      * @param preObject the previous object
      */
-    public void setPreObject(gObject preObject) {
+    /*public void setPreObject(gObject preObject) {
         this.preObject = preObject;
-    }
+    }*/
 
     /**
      * Getter for the previous object
      * 
      * @return preObject
      */
-    public gObject getPreObject() {
+    /*public gObject getPreObject() {
         return preObject;
-    }
+    }*/
 
     /**
      * Method to add a ground object at the spot which you are moving away from
      * unless the previous object was a marked ground object (blankMarked)
      */
-    public void blankPrint() {
+    /*public void blankPrint() {
 
         if (!(getPreObject() instanceof blankMarked)) {
             model.setToMap(new blank(x, y, new JLabel(blankImage)), x, y);
         }
-    }
+    }*/
 
     /**
      * Method used for standard movement logic
@@ -79,13 +77,13 @@ public class SokobanController extends controller {
      * @param xMove     movement change in x direction
      * @param yMove     movement change in y direction
      */
-    public void stdMove(gObject preObject, int xMove, int yMove) {
+    /*public void stdMove(gObject preObject, int xMove, int yMove) {
         player.setX(player.getX() + xMove);
         player.setY(player.getY() + yMove);
         blankPrint();
         model.setToMap(player, player.getX(), player.getY());
         setPreObject(preObject);
-    }
+    }*/
 
     /**
      * Keypresses logic which changes the gObject 2d array based on keypress,
@@ -97,12 +95,12 @@ public class SokobanController extends controller {
     @Override
     public void keyPressed(KeyEvent e) {
         int key = e.getKeyCode();
-        y = model.getPlayer().getY();
-        x = model.getPlayer().getX();
+        /*y = model.getPlayer().getY();
+        x = model.getPlayer().getX();*/
 
         switch (key) {
             case KeyEvent.VK_UP:
-                if (y > 0 && player.collision(player, 2, model.getObjectList())) {
+                /*if (y > 0 && player.collision(player, 2, model.getObjectList())) {
 
                     gObject upO = model.getInMap(player.getX(), player.getY() - 1);
                     gObject uptwoO = model.getInMap(upO.getX(), upO.getY() - 1);
@@ -148,11 +146,11 @@ public class SokobanController extends controller {
                             setPreObject(new blankMarked(player.getX(), player.getY(), new JLabel(blankMarkedImage)));
                         }
                     }
-                }
-
+                }*/
+                model.move(0, -1, 2);
                 break;
             case KeyEvent.VK_DOWN:
-                if (y <= view.getHeight() && player.collision(player, 3, model.getObjectList())) {
+                /*if (y <= view.getHeight() && player.collision(player, 3, model.getObjectList())) {
 
                     gObject downO = model.getInMap(player.getX(), player.getY() + 1);
                     gObject downtwoO = model.getInMap(downO.getX(), downO.getY() + 1);
@@ -199,11 +197,11 @@ public class SokobanController extends controller {
                         }
                     }
 
-                }
-
+                }*/
+                model.move(0, 1, 3);
                 break;
             case KeyEvent.VK_LEFT:
-                if (x > 0 && player.collision(player, 0, model.getObjectList())) {
+                /*if (x > 0 && player.collision(player, 0, model.getObjectList())) {
 
                     gObject leftO = model.getInMap(player.getX() - 1, player.getY());
                     gObject lefttwoO = model.getInMap(leftO.getX() - 1, leftO.getY());
@@ -250,11 +248,11 @@ public class SokobanController extends controller {
                         }
                     }
 
-                }
-
+                }*/
+                model.move(-1, 0, 0);
                 break;
             case KeyEvent.VK_RIGHT:
-                if (x <= view.getWidth() && player.collision(player, 1, model.getObjectList())) {
+                /*if (x <= view.getWidth() && player.collision(player, 1, model.getObjectList())) {
 
                     gObject rightO = model.getInMap(player.getX() + 1, player.getY());
                     gObject righttwoO = model.getInMap(rightO.getX() + 1, rightO.getY());
@@ -302,8 +300,8 @@ public class SokobanController extends controller {
                         }
                     }
 
-                }
-
+                }*/
+                model.move(1, 0, 1);
                 break;
         }
     }

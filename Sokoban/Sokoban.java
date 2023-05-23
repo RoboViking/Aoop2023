@@ -41,6 +41,9 @@ public class Sokoban {
         txtView = new SokobanTextView(model); 
         controller = new SokobanController(model, view);
 
+        model.getViews().add(view);
+        model.getViews().add(txtView);
+
         // frame init
         JFrame frame = new JFrame("Sokoban");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -54,8 +57,14 @@ public class Sokoban {
         // the game loop
         while (true) {
             // view update
-            view.update();
-            txtView.update();
+            
+            /*
+             * view observer update
+             */
+            for(int x = 0; x<model.getViews().size(); x++){
+                model.getViews().get(x).update();
+            }
+
             txtView.printCurrentMap();
 
             try {
