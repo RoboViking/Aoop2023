@@ -24,12 +24,16 @@ public class SokobanModel extends model {
     private boolean state = true;
     private gObject preObject;
 
+    ImageIcon wallImage = new ImageIcon(
+            "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/wall.png");
     ImageIcon blankImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blank.png");
     ImageIcon blankMarkedImage = new ImageIcon(
             "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/blankmarked.png");
     ImageIcon crateImage = new ImageIcon("/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/crate.png");
     ImageIcon crateMarkedImage = new ImageIcon(
             "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/cratemarked.png");
+    ImageIcon playerImage = new ImageIcon(
+            "/home/fhenrysson/Documents/github/Aoop2023/Sokoban/images/player.png");
 
     /**
      * Seter the level
@@ -71,6 +75,38 @@ public class SokobanModel extends model {
         return player;
     }
 
+    public void mapInit(int[][] map) {
+
+        setObjectListSize(map[0].length, map.length);
+        for (int y = 0; y < map.length; y++) {
+            for (int x = 0; x < map[0].length; x++) {
+
+                switch (map[y][x]) {
+                    case 0:
+                        setToMap(new blank(x, y, new JLabel(blankImage)), x, y);
+                        break;
+                    case 1:
+                        setToMap(new wall(x, y, new JLabel(wallImage)), x, y);
+                        break;
+                    case 2:
+                        setToMap(new crate(x, y, new JLabel(crateImage)), x, y);
+                        break;
+                    case 3:
+                        setToMap(new blankMarked(x, y, new JLabel(blankMarkedImage)), x, y);
+                        break;
+                    case 4:
+                        setToMap(new crateMarked(x, y, new JLabel(crateMarkedImage)), x, y);
+                        break;
+                    case 5:
+                        player = new player(x, y, new JLabel(playerImage));
+                        setToMap(player, x, y);
+                        setPlayer(player);
+                        break;
+                }
+            }
+        }
+    }
+
     /**
      * Getter for the views
      * 
@@ -96,6 +132,7 @@ public class SokobanModel extends model {
 
     /**
      * Getter for current map
+     * 
      * @return currentMap
      */
     public int[][] getCurrentMap() {
@@ -104,6 +141,7 @@ public class SokobanModel extends model {
 
     /**
      * Setter for the current boolean game state
+     * 
      * @param state state
      */
     public void setState(boolean state) {
@@ -119,6 +157,7 @@ public class SokobanModel extends model {
 
     /**
      * setter for the previous object
+     * 
      * @param preObject
      */
     public void setPreObject(gObject preObject) {
@@ -127,6 +166,7 @@ public class SokobanModel extends model {
 
     /**
      * returns the previous object
+     * 
      * @return preobject
      */
     public gObject getPreObject() {
@@ -140,12 +180,13 @@ public class SokobanModel extends model {
         if (!(getPreObject() instanceof blankMarked)) {
             setToMap(new blank(getPlayer().getX(), getPlayer().getY(), new JLabel(blankImage)), getPlayer().getX(),
                     getPlayer().getY());
-            
+
         }
     }
 
     /**
      * standard moves used in the move method
+     * 
      * @param xMove step to move in the x axis
      * @param yMove step to move in the y axis
      */
@@ -154,7 +195,7 @@ public class SokobanModel extends model {
         player.setX(player.getX() + xMove);
         player.setY(player.getY() + yMove);
         setToMap(player, player.getX(), player.getY());
-        
+
     }
 
     /**
@@ -165,8 +206,8 @@ public class SokobanModel extends model {
      * down: 3
      * Movement method
      * 
-     * @param xMove step to move in the x axis
-     * @param yMove step to move in the y axis
+     * @param xMove     step to move in the x axis
+     * @param yMove     step to move in the y axis
      * @param direction the direcion used in the collision logic
      */
     public void move(int xMove, int yMove, int direction) {
@@ -179,13 +220,13 @@ public class SokobanModel extends model {
                 if (!((nextO instanceof crate || nextO instanceof crateMarked) &&
                         (nexttwoO instanceof crate || nexttwoO instanceof crateMarked))) {
                     setToMap(preObject, preObject.getX(), preObject.getY());
-                }
+                } else if (nexttwoO instanceof crateMarked) { }
             }
 
             if (nextO instanceof blank || nextO instanceof blankMarked) {
                 stdMove(xMove, yMove);
 
-                if(nextO instanceof blankMarked){
+                if (nextO instanceof blankMarked) {
                     setPreObject(new blankMarked(player.getX(), player.getY(), new JLabel(blankMarkedImage)));
                 } else {
                     setPreObject(new blank(player.getX(), player.getY(), new JLabel(blankImage)));
@@ -202,6 +243,7 @@ public class SokobanModel extends model {
                     setPreObject(new blank(player.getX(), player.getY(), new JLabel(blankImage)));
                 } else if (nexttwoO instanceof crate) {
                 } else if (nexttwoO instanceof crateMarked) {
+                } else if (nexttwoO instanceof wall){
                 } else {
                     nextO.setX(nextO.getX() + xMove);
                     nextO.setY(nextO.getY() + yMove);
@@ -222,7 +264,7 @@ public class SokobanModel extends model {
                     blankPrint();
                     player.setX(player.getX() + xMove);
                     player.setY(player.getY() + yMove);
-                    
+
                     setToMap(player, player.getX(), player.getY());
                     setPreObject(new blankMarked(player.getX(), player.getY(), new JLabel(blankMarkedImage)));
                 }

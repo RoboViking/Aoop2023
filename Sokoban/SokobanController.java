@@ -25,7 +25,7 @@ public class SokobanController extends controller {
     }
 
     /**
-     * keyPress implementation
+     * keyPress
      */
     @Override
     public void keyPressed(KeyEvent e) {

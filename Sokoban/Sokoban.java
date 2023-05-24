@@ -37,6 +37,10 @@ public class Sokoban {
 
         // init framework
         model = new SokobanModel(map);
+
+        /*new */
+        model.mapInit(map);
+
         view = new SokobanView(model);
         txtView = new SokobanTextView(model); 
         controller = new SokobanController(model, view);
