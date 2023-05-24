@@ -220,7 +220,8 @@ public class SokobanModel extends model {
                 if (!((nextO instanceof crate || nextO instanceof crateMarked) &&
                         (nexttwoO instanceof crate || nexttwoO instanceof crateMarked))) {
                     setToMap(preObject, preObject.getX(), preObject.getY());
-                } else if (nexttwoO instanceof crateMarked) { }
+                } else if (nexttwoO instanceof crateMarked) {
+                }
             }
 
             if (nextO instanceof blank || nextO instanceof blankMarked) {
@@ -234,23 +235,23 @@ public class SokobanModel extends model {
             }
 
             if (nextO instanceof crate && nextO.collision(nextO, direction, getObjectList())) {
-
-                if (nexttwoO instanceof blankMarked) {
-                    setToMap(
-                            new crateMarked(nexttwoO.getX(), nexttwoO.getY(), new JLabel(crateMarkedImage)),
-                            nexttwoO.getX(), nexttwoO.getY());
-                    stdMove(xMove, yMove);
-                    setPreObject(new blank(player.getX(), player.getY(), new JLabel(blankImage)));
-                } else if (nexttwoO instanceof crate) {
-                } else if (nexttwoO instanceof crateMarked) {
-                } else if (nexttwoO instanceof wall){
-                } else {
-                    nextO.setX(nextO.getX() + xMove);
-                    nextO.setY(nextO.getY() + yMove);
-                    setToMap(nextO, nextO.getX(), nextO.getY());
-                    stdMove(xMove, yMove);
-                }
-
+               
+                    if (nexttwoO instanceof blankMarked) {
+                        setToMap(
+                                new crateMarked(nexttwoO.getX(), nexttwoO.getY(), new JLabel(crateMarkedImage)),
+                                nexttwoO.getX(), nexttwoO.getY());
+                        stdMove(xMove, yMove);
+                        setPreObject(new blank(player.getX(), player.getY(), new JLabel(blankImage)));
+                    } else if (nexttwoO instanceof crate) {
+                    } else if (nexttwoO instanceof crateMarked) {
+                    } else if (nexttwoO instanceof wall) {
+                    } else {
+                        nextO.setX(nextO.getX() + xMove);
+                        nextO.setY(nextO.getY() + yMove);
+                        setToMap(nextO, nextO.getX(), nextO.getY());
+                        stdMove(xMove, yMove);
+                        setPreObject(new blank(getPlayer().getX(), getPlayer().getY(), new JLabel(blankImage)));
+                    }
             }
 
             if (nextO instanceof crateMarked && nextO.collision(nextO, direction, getObjectList())) {
