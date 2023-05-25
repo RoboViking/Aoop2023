@@ -75,6 +75,10 @@ public class SokobanModel extends model {
         return player;
     }
 
+    /**
+     * Init for lvl
+     * @param map lvl
+     */
     public void mapInit(int[][] map) {
 
         setObjectListSize(map[0].length, map.length);
@@ -118,7 +122,6 @@ public class SokobanModel extends model {
 
     /**
      * Print method for the current map state in terminal
-     * Used for debugg and more
      */
     public void printCurrentMap() {
         for (int y = 0; y < getObjectList()[0].length; y++) {
@@ -132,7 +135,6 @@ public class SokobanModel extends model {
 
     /**
      * Getter for current map
-     * 
      * @return currentMap
      */
     public int[][] getCurrentMap() {
@@ -141,7 +143,6 @@ public class SokobanModel extends model {
 
     /**
      * Setter for the current boolean game state
-     * 
      * @param state state
      */
     public void setState(boolean state) {
@@ -156,8 +157,7 @@ public class SokobanModel extends model {
     }
 
     /**
-     * setter for the previous object
-     * 
+     * Setter for the previous object
      * @param preObject
      */
     public void setPreObject(gObject preObject) {
@@ -165,8 +165,7 @@ public class SokobanModel extends model {
     }
 
     /**
-     * returns the previous object
-     * 
+     * Returns the previous object
      * @return preobject
      */
     public gObject getPreObject() {
@@ -185,8 +184,7 @@ public class SokobanModel extends model {
     }
 
     /**
-     * standard moves used in the move method
-     * 
+     * Standard moves used in the move method
      * @param xMove step to move in the x axis
      * @param yMove step to move in the y axis
      */
@@ -205,7 +203,6 @@ public class SokobanModel extends model {
      * up: 2
      * down: 3
      * Movement method
-     * 
      * @param xMove     step to move in the x axis
      * @param yMove     step to move in the y axis
      * @param direction the direcion used in the collision logic
@@ -274,10 +271,8 @@ public class SokobanModel extends model {
     }
 
     /**
-     * Implementation of statceCheck which returns if the game is won or still
-     * running
-     * also writes the current state of the game into a 2d array to be printed in
-     * terminal
+     * Implementation of statceCheck which returns if the game is won or still running 
+     * also writes the current state of the game into a 2d array to be printed in terminal
      */
     @Override
     public boolean stateCheck() {

@@ -3,12 +3,6 @@ package Sokoban;
 import javax.swing.*;
 import java.awt.*;
 import Sokoban.framework.view;
-import Sokoban.objects.blank;
-import Sokoban.objects.blankMarked;
-import Sokoban.objects.crate;
-import Sokoban.objects.crateMarked;
-import Sokoban.objects.player;
-import Sokoban.objects.wall;
 
 /**
  * Extends the view.

@@ -35,16 +35,14 @@ public class Sokoban {
                 { 1, 1, 1, 1, 1, 1, 1, 1 }
         };
 
-        // init framework
+        // inits framework
         model = new SokobanModel(map);
-
-        /*new */
         model.mapInit(map);
-
         view = new SokobanView(model);
         txtView = new SokobanTextView(model); 
         controller = new SokobanController(model, view);
 
+        //adding views to array for observer pattern
         model.getViews().add(view);
         model.getViews().add(txtView);
 
@@ -59,9 +57,7 @@ public class Sokoban {
         frame.setVisible(true);
 
         // the game loop
-        while (true) {
-            // view update
-            
+        while (true) {            
             /*
              * view observer update
              */
@@ -72,7 +68,7 @@ public class Sokoban {
             txtView.printCurrentMap();
 
             try {
-                Thread.sleep(32); // makes sure that the cpu doesnt over heat ~32 ms is about 30 fps
+                Thread.sleep(32); // ~32 ms is about 30 fps
             } catch (Exception e) {
                 System.out.println("Something went wrong");
             }
